@@ -33,6 +33,14 @@ public class Maze
     public void MoveLeft()
     {
         // FILL IN CODE
+        if (!_mazeMap.TryGetValue((_currX, _currY), out var dirs) || dirs == null || dirs.Length < 4)
+            throw new InvalidOperationException("Can't go that way!");
+
+    // left is index 0
+        if (!dirs[0])
+            throw new InvalidOperationException("Can't go that way!");
+
+        _currX = _currX - 1;
     }
 
     /// <summary>
@@ -42,6 +50,14 @@ public class Maze
     public void MoveRight()
     {
         // FILL IN CODE
+        if (!_mazeMap.TryGetValue((_currX, _currY), out var dirs) || dirs == null || dirs.Length < 4)
+            throw new InvalidOperationException("Can't go that way!");
+
+    // right is index 1
+         if (!dirs[1])
+            throw new InvalidOperationException("Can't go that way!");
+
+        _currX = _currX + 1;
     }
 
     /// <summary>
@@ -51,6 +67,15 @@ public class Maze
     public void MoveUp()
     {
         // FILL IN CODE
+        if (!_mazeMap.TryGetValue((_currX, _currY), out var dirs) || dirs == null || dirs.Length < 4)
+            throw new InvalidOperationException("Can't go that way!");
+
+    // up is index 2
+        if (!dirs[2])
+            throw new InvalidOperationException("Can't go that way!");
+
+    // Interpretation used: y decreases when moving "up" (rows numbered top-to-bottom y=1..N)
+        _currY = _currY - 1;
     }
 
     /// <summary>
@@ -60,6 +85,15 @@ public class Maze
     public void MoveDown()
     {
         // FILL IN CODE
+        if (!_mazeMap.TryGetValue((_currX, _currY), out var dirs) || dirs == null || dirs.Length < 4)
+            throw new InvalidOperationException("Can't go that way!");
+
+    // down is index 3
+        if (!dirs[3])
+            throw new InvalidOperationException("Can't go that way!");
+
+    // y increases when moving "down"
+    _currY = _currY + 1;
     }
 
     public string GetStatus()
